@@ -91,63 +91,81 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <h2>Discover the Universe</h2>
-
-      <input
-        type="date"
-        onChange={(e) => setDate(e.target.value)}
-      />
-
-      <button onClick={getSpaceData}>Search</button>
-
-      <h3>{spaceData.title}</h3>
-
-      {spaceData.media_type === "video" ? (
-        <iframe
-          src={spaceData.url}
-          title={spaceData.title}
+    <main className="home-page">
+      <div className="search-row">
+        <input
+          type="date"
+          onChange={(e) => setDate(e.target.value)}
         />
-      ) : (
-        <img
-          src={spaceData.url}
-          alt={spaceData.title}
-          width="600"
-        />
-      )}
 
-      <p>{spaceData.explanation}</p>
+        <button onClick={getSpaceData}>Search</button>
+      </div>
 
-      <button onClick={aiExplain} disabled={loading}>
-        {loading ? "Loading..." : "AI Explain"}
-      </button>
+      <div className="home-grid">
+        <section className="nasa-section">
+          <h2>{spaceData.title}</h2>
 
-      <button onClick={saveFavorite}>
-        Save Favorite
-      </button>
+          {spaceData.media_type === "video" ? (
+            <iframe
+              src={spaceData.url}
+              title={spaceData.title}
+            />
+          ) : (
+            <img
+              src={spaceData.url}
+              alt={spaceData.title}
+            />
+          )}
 
-      <p>{aiExplanation}</p>
+          <p>{spaceData.explanation}</p>
 
-      <button onClick={generateQuiz}>
-        Generate Quiz
-      </button>
-
-      {quiz && (
-        <div>
-          <h3>{quiz.question}</h3>
-
-          {quiz.options.map((option) => (
-            <button
-              key={option}
-              onClick={() => checkAnswer(option)}
-            >
-              {option}
+          <div className="action-buttons">
+            <button onClick={aiExplain} disabled={loading}>
+              {loading ? "Loading..." : "AI Explain"}
             </button>
-          ))}
 
-          <p>{result}</p>
-        </div>
-      )}
+            <button onClick={saveFavorite}>
+              Save Favorite
+            </button>
+          </div>
+        </section>
+
+        <section className="ai-section">
+          <h2>AI Explanation</h2>
+
+          <div className="ai-box">
+            {aiExplanation ||
+              "Click AI Explain to get a simple explanation."}
+          </div>
+
+          <div className="quiz-header">
+            <h2>AI Quiz</h2>
+
+            <button onClick={generateQuiz}>
+              Generate Quiz
+            </button>
+          </div>
+
+          {quiz && (
+            <div className="quiz-box">
+              <h3>{quiz.question}</h3>
+
+              <div className="quiz-options">
+                {quiz.options.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => checkAnswer(option)}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+
+              <p className="quiz-result">{result}</p>
+            </div>
+          )}
+        </section>
+      </div>
     </main>
   );
 }

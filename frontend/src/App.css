@@ -117,4 +117,92 @@ footer p {
   margin: 6px 0;
 }
 
+.home-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
 
+.search-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-row input {
+  flex: 1;
+  max-width: 350px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.nasa-section,
+.ai-section {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.nasa-section img,
+.nasa-section iframe {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ai-box,
+.quiz-box {
+  background: #f7f9ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quiz-options button {
+  width: 100%;
+  text-align: left;
+  background: white;
+  color: #1f3c88;
+  border: 1px solid #ccd5ee;
+}
+
+.quiz-options button:hover {
+  background: #eef3ff;
+}
+
+.quiz-result {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+@media (max-width: 800px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}

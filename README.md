@@ -2,7 +2,7 @@
 
 ## Description
 
-Nova is a full-stack MERN application that lets users explore NASA's Astronomy Picture of the Day. Users can search by date, save their favorite astronomy images or videos, generate AI-powered explanations using Google Gemini, and create an account to register and log in.
+Nova is a full-stack MERN application that lets users explore NASA's Astronomy Picture of the Day. Users can search by date, save their favorite astronomy images or videos, generate AI-powered explanations and quizzes using Google Gemini, and create an account to register and log in.
 
 ## Technologies Used
 
@@ -35,6 +35,7 @@ Nova is a full-stack MERN application that lets users explore NASA's Astronomy P
 - Edit notes
 - Delete favorites
 - AI explanations powered by Gemini
+- AI-generated quizzes with Gemini
 - User registration
 - User login
 
@@ -48,7 +49,6 @@ https://capstone-project-6qdz.onrender.com
 
 ## Future Improvements
 
-- Add AI-generated quizzes with Gemini
 - Add user profile page
 - Show personalized favorites for each user
 - Improve the user interface

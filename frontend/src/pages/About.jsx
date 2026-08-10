@@ -4,7 +4,7 @@ export default function About() {
       <h1>About Nova</h1>
 
       <p className="intro">
-  Nova lets users explore NASA's Astronomy Picture of the Day and better understand astronomy with AI explanations.
+  Nova lets users explore NASA's Astronomy Picture of the Day, save favorites, learn through AI-powered explanations, and test their knowledge with AI-generated quizzes.
     </p>
 
      <h2>Features</h2>
@@ -14,6 +14,7 @@ export default function About() {
       <p>Save favorites</p>
       <p>Add notes</p>
       <p>AI explanations powered by Gemini</p>
+<p>AI-generated quizzes</p>
     </main>
   );
 }

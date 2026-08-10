@@ -123,7 +123,6 @@ footer p {
   padding: 20px;
 }
 
-/* Search */
 
 .search-row {
   display: flex;
@@ -146,7 +145,6 @@ footer p {
   padding: 0 30px;
 }
 
-/* NASA section */
 
 .nasa-section {
   background: white;
@@ -174,7 +172,6 @@ footer p {
   line-height: 1.7;
 }
 
-/* Main buttons */
 
 .action-buttons {
   display: flex;
@@ -182,8 +179,6 @@ footer p {
   gap: 15px;
   margin-top: 20px;
 }
-
-/* AI section */
 
 .ai-section {
   background: white;
@@ -244,7 +239,6 @@ footer p {
   margin-top: 15px;
 }
 
-/* Mobile */
 
 @media (max-width: 700px) {
   .home-page {
@@ -271,4 +265,11 @@ footer p {
     flex-direction: column;
     gap: 15px;
   }
+}
+
+.ai-intro {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
 }

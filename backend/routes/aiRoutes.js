@@ -8,45 +8,46 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
+// AI Explain
 router.post("/explain", async (req, res) => {
-  const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: `Explain this astronomy information in simple English: ${req.body.explanation}`,
-  });
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: `Explain this astronomy information in simple English: ${req.body.explanation}`,
+    });
 
-  res.json({
-    explanation: response.text,
-  });
+    res.json({
+      explanation: response.text,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "AI explanation failed",
+    });
+  }
 });
 
+// AI Quiz
 router.post("/quiz", async (req, res) => {
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
-      contents: `Create one simple multiple-choice astronomy question based on this information:
 
-${req.body.explanation}`,
+      contents: `
+Create one simple multiple-choice question based on this astronomy information:
+
+${req.body.explanation}
+
+Return exactly:
+{
+  "question": "question here",
+  "options": ["option 1", "option 2", "option 3", "option 4"],
+  "answer": "correct option"
+}
+`,
 
       config: {
         responseMimeType: "application/json",
-        responseJsonSchema: {
-          type: "object",
-          properties: {
-            question: {
-              type: "string",
-            },
-            options: {
-              type: "array",
-              items: {
-                type: "string",
-              },
-            },
-            answer: {
-              type: "string",
-            },
-          },
-          required: ["question", "options", "answer"],
-        },
       },
     });
 
@@ -54,7 +55,7 @@ ${req.body.explanation}`,
 
     res.json(quiz);
   } catch (error) {
-    console.log(error);
+    console.log("QUIZ ERROR:", error);
 
     res.status(500).json({
       message: "Quiz generation failed",

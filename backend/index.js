@@ -7,6 +7,7 @@ import favoriteRoutes from "./routes/favoriteRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
+
 dotenv.config();
 
 const app = express();

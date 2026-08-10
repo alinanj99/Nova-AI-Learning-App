@@ -125,12 +125,12 @@ footer p {
 
 .search-row {
   display: flex;
+  justify-content: center;
   gap: 10px;
   margin-bottom: 30px;
 }
 
 .search-row input {
-  flex: 1;
   max-width: 350px;
 }
 

@@ -8,7 +8,6 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-// AI Explain
 router.post("/explain", async (req, res) => {
   const response = await ai.models.generateContent({
     model: "gemini-3.6-flash",
@@ -20,29 +19,47 @@ router.post("/explain", async (req, res) => {
   });
 });
 
-// AI Quiz
 router.post("/quiz", async (req, res) => {
-  const response = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: `
-Create one simple multiple-choice question based on this astronomy information:
-${req.body.explanation}
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: `Create one simple multiple-choice astronomy question based on this information:
 
-Return only JSON:
-{
-  "question": "question",
-  "options": ["option 1", "option 2", "option 3", "option 4"],
-  "answer": "correct option"
-}
-`,
-  });
+${req.body.explanation}`,
 
-  const text = response.text
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
+      config: {
+        responseMimeType: "application/json",
+        responseJsonSchema: {
+          type: "object",
+          properties: {
+            question: {
+              type: "string",
+            },
+            options: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            answer: {
+              type: "string",
+            },
+          },
+          required: ["question", "options", "answer"],
+        },
+      },
+    });
 
-  res.json(JSON.parse(text));
+    const quiz = JSON.parse(response.text);
+
+    res.json(quiz);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Quiz generation failed",
+    });
+  }
 });
 
 export default router;

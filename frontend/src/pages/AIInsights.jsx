@@ -4,8 +4,7 @@ export default function AIInsights() {
       <h1>AI Insights</h1>
 
       <p className="intro">
-  Nova uses Gemini AI to generate simple explanations and interactive quizzes 
-  based on NASA's Astronomy Picture of the Day.
+  Nova uses Gemini AI to generate simple explanations and interactive quizzes based on NASA's Astronomy Picture of the Day.
 </p>
 
 <h2>How to Use</h2>

@@ -49,7 +49,7 @@ https://capstone-project-6qdz.onrender.com
 
 ## Future Improvements
 
-- Add user profile page
-- Show personalized favorites for each user
-- Improve the user interface
-
+- Build a user dashboard
+- Improve search, filtering, and sorting for favorites
+- Add responsive layouts for mobile devices
+- Add automated tests and update the local setup guide
